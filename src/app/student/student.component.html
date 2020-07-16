@@ -1,0 +1,75 @@
+<!-- AUTHOR: Srivedaa Chinthalapani
+     This is the survey html page
+-->
+
+<body>
+  <form [formGroup]="scheduleForm" (ngSubmit)="onSubmit()" name='scheduleForm' id="scheduleId">
+    <div class="surveyDetails" *ngIf="showSuccess">
+      <div>
+        <h1 class="surveyForm" style="width:470px;">Conversational Handler</h1>
+        <div class="survey-Details">
+        <div class="nameDetails">
+        <div style="display: flex;
+        padding-top: 40px;">
+
+    </div>
+      <!-- details of user's firstname and lastname -->
+        <div  class="firstName">
+            <div class="first-text">Name</div>
+          <input type="text" formControlName="sname" id="sname" class="studentName first-name" placeholder="Enter name"
+            mValidateOnBlur />
+        </div>
+
+          
+<!-- this part consists of dropdown -->
+<div class="radioBtns">
+    <div class="first-text">Select an Endpoint</div>
+    <div class="dropDown">
+        <select formControlName="likeliness">
+          <option value="0" selected>Select EndPoint</option>
+          <option value="s1">s1</option>
+          <option value="s2">s2</option>
+          <option value="s3">s3</option>
+          <option value="s4">s4</option>
+          <option value="s5">s5</option>
+          <option value="s6">s6</option>
+          <option value="s7">s7</option>
+          <option value="s8">s8</option>
+          <option value="s9">s9</option>
+          <option value="s10">s10</option>
+        </select>
+    </div>
+</div>
+
+        <button (click)="submit()"  class="submit button--orange-red start-button margin-right--20" style="margin-top:20px;margin-bottom:20px;" id="schedule" type="button"
+          value="SCHEDULE">SCHEDULE</button>
+      </div>
+      </div>
+    </div>
+    </div>
+  </form>
+
+</body>
+
+
+<!--Simple acknowledgement display-->
+
+<div *ngIf="showSimpleAcknowledgement">
+  <table border="1">
+    <tr>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Present Node</th>
+      <th>Next Node</th>
+    </tr>
+    <tr *ngFor="let data of res">
+      <td>{{data.name}}</td>
+      <td>{{data.date}}</td>
+      <td>{{data.transition}}</td>
+      <td>{{data.nextTransition}}</td>
+    </tr>
+  </table>
+</div>
+
+
+<router-outlet></router-outlet>
